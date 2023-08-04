@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Your Webpage</title>
+    <title>Linkedin Timestamp Extractor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,7 +28,7 @@
 
 <body>
     <div class="container">
-        <h1>Welcome to Your Webpage</h1>
+        <h1>Linkedin Timestamp Extractor from Post</h1>
         <input id="linkedin_url" type="text" placeholder="Enter LinkedIn URL">
         <button onclick="sendPostRequest()">Submit</button>
         <p id="result"></p>
@@ -51,7 +51,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.statusCode === 200) {
-                        document.getElementById('result').textContent = `Date: ${data.body}`;
+                        document.getElementById('result').textContent = `Date: ${data.body.data}`;  // Access the date from data.body.data
                     } else {
                         document.getElementById('result').textContent = `Error: ${data.body.message}`;
                     }
