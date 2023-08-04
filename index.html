@@ -48,12 +48,12 @@
                 },
                 body: JSON.stringify({ linkedin_url: linkedinUrl })
             })
-                .then(response => response.json())  // Parse the response as JSON
+                .then(response => response.text())  // Use response.text() instead of response.json()
                 .then(data => {
-                    if (data.statusCode === 200) {
-                        document.getElementById('result').textContent = `Date: ${data.body.data}`;  // Access the date from data.body.data
+                    if (data) {
+                        document.getElementById('result').textContent = `Date: ${data}`;  // Display the returned text directly
                     } else {
-                        document.getElementById('result').textContent = `Error: ${data.body.message}`;
+                        document.getElementById('result').textContent = 'No response from server';
                     }
                 })
                 .catch((error) => {
