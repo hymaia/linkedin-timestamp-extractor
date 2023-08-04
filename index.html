@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>LinkedIn Timestamp</title>
+    <title>LinkedIn Timestamp Extractor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,11 +56,19 @@
             margin-top: 20px;
             font-weight: bold;
         }
+
+        h1 {
+            text-align: center;
+            color: #0077b5;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <h1>LinkedIn Timestamp Extractor</h1>
         <div class="logo-input-container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                 alt="LinkedIn Logo" width="40">
@@ -75,7 +83,7 @@
         const url = "https://70bhcmjro5.execute-api.eu-west-1.amazonaws.com/prod/resource";
 
         function sendPostRequest() {
-            const linkedinUrl = document.getElementById('linkedin_url').value;
+            const linkedinUrl = document.getElementById('linkedin-url').value;
             fetch(url, {
                 method: 'POST',
                 headers: {
