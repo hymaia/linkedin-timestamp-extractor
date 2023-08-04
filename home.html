@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #result {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Your Webpage</h1>
+        <input id="linkedin_url" type="text" placeholder="Enter LinkedIn URL">
+        <button onclick="sendPostRequest()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const apiKey = "ib5DRuOf1O7PSlN0Gzzr6aRpvnq5koG52mIMk4oq";
+
+        function sendPostRequest() {
+            const linkedinUrl = document.getElementById('linkedin_url').value;
+
+            fetch('"https://70bhcmjro5.execute-api.eu-west-1.amazonaws.com/prod/resource', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiKey
+                },
+                body: JSON.stringify({ linkedin_url: linkedinUrl })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.statusCode === 200) {
+                        document.getElementById('result').textContent = `Date: ${data.body}`;
+                    } else {
+                        document.getElementById('result').textContent = `Error: ${data.body.message}`;
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>
