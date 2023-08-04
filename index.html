@@ -2,35 +2,71 @@
 <html>
 
 <head>
-    <title>Linkedin Timestamp Extractor</title>
+    <title>LinkedIn Timestamp</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-color: #f3f3f3;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
 
         .container {
-            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-input-container>img {
+            margin-right: 10px;
+        }
+
+        #linkedin-url {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            display: block;
+            background-color: #0077b5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
 
         #result {
             margin-top: 20px;
-            color: #333;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Linkedin Timestamp Extractor from Post</h1>
-        <input id="linkedin_url" type="text" placeholder="Enter LinkedIn URL">
-        <button onclick="sendPostRequest()">Submit</button>
+        <div class="logo-input-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                alt="LinkedIn Logo" width="40">
+            <input id="linkedin-url" type="text" placeholder="Enter LinkedIn URL">
+        </div>
+        <button onclick="sendPostRequest()">Get</button>
         <p id="result"></p>
     </div>
 
