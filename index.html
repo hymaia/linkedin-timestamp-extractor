@@ -50,10 +50,11 @@
             })
                 .then(response => response.text())  // Use response.text() instead of response.json()
                 .then(data => {
-                    if (data) {
-                        document.getElementById('result').textContent = `Date: ${data}`;  // Display the returned text directly
-                    } else {
-                        document.getElementById('result').textContent = 'No response from server';
+                    try {
+                        const jsonData = JSON.parse(data);  // Parse the response text as JSON
+                        document.getElementById('result').textContent = `Date: ${jsonData.data}`;  // Display the date value
+                    } catch (e) {
+                        console.error('Could not parse response as JSON', e);
                     }
                 })
                 .catch((error) => {
