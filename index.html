@@ -48,12 +48,17 @@
                 },
                 body: JSON.stringify({ linkedin_url: linkedinUrl })
             })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(data => {
-                    if (data.statusCode === 200) {
-                        document.getElementById('result').textContent = `Date: ${data.body.data}`;  // Access the date from data.body.data
-                    } else {
-                        document.getElementById('result').textContent = `Error: ${data.body.message}`;
+                    try {
+                        const jsonData = JSON.parse(data);
+                        if (jsonData.statusCode === 200) {
+                            document.getElementById('result').textContent = `Date: ${jsonData.body.data}`;  // Access the date from jsonData.body.data
+                        } else {
+                            document.getElementById('result').textContent = `Error: ${jsonData.body.message}`;
+                        }
+                    } catch (e) {
+                        console.error('Could not parse response as JSON', e);
                     }
                 })
                 .catch((error) => {
