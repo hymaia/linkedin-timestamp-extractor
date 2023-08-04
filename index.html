@@ -36,11 +36,11 @@
 
     <script>
         const apiKey = "ib5DRuOf1O7PSlN0Gzzr6aRpvnq5koG52mIMk4oq";
+        const url = "https://70bhcmjro5.execute-api.eu-west-1.amazonaws.com/prod/resource";
 
         function sendPostRequest() {
             const linkedinUrl = document.getElementById('linkedin_url').value;
-
-            fetch('https://70bhcmjro5.execute-api.eu-west-1.amazonaws.com/prod/resource', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
