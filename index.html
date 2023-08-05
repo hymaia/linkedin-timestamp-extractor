@@ -3,67 +3,7 @@
 
 <head>
     <title>LinkedIn Timestamp Extractor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f3f3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-input-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-input-container>img {
-            margin-right: 10px;
-        }
-
-        #linkedin-url {
-            flex-grow: 1;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        button {
-            display: block;
-            background-color: #0077b5;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        h1 {
-            text-align: center;
-            color: #0077b5;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
@@ -74,38 +14,11 @@
                 alt="LinkedIn Logo" width="40">
             <input id="linkedin-url" type="text" placeholder="Enter LinkedIn URL">
         </div>
-        <button onclick="sendPostRequest()">Get</button>
+        <button onclick="handleGetButtonClick()">Get</button>
         <p id="result"></p>
     </div>
 
-    <script>
-        const apiKey = "ib5DRuOf1O7PSlN0Gzzr6aRpvnq5koG52mIMk4oq";
-        const url = "https://70bhcmjro5.execute-api.eu-west-1.amazonaws.com/prod/resource";
-
-        function sendPostRequest() {
-            const linkedinUrl = document.getElementById('linkedin-url').value;
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': apiKey
-                },
-                body: JSON.stringify({ linkedin_url: linkedinUrl })
-            })
-                .then(response => response.text())  // Use response.text() instead of response.json()
-                .then(data => {
-                    try {
-                        const jsonData = JSON.parse(data);  // Parse the response text as JSON
-                        document.getElementById('result').textContent = `Date: ${jsonData.data}`;  // Display the date value
-                    } catch (e) {
-                        console.error('Could not parse response as JSON', e);
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-    </script>
+    <script src="extract_timestamp.js"></script>
 </body>
 
 </html>
