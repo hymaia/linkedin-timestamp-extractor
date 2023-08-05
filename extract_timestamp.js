@@ -15,7 +15,7 @@ function extractTimestampFromPostId(postId) {
 // Function to format the timestamp into a human-readable date in French local time.
 function formatTimestamp(timestamp) {
     const dateObject = new Date(timestamp);
-    return dateObject.toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+    return dateObject.toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }) + ' (Paris time)';
 }
 
 // Function to handle the click event of the "Get" button.
